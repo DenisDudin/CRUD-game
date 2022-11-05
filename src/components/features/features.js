@@ -1,42 +1,79 @@
-const Features = () => {
-    return (
-        <div className="features">
-            <div className="features-list">
-                <h3 className="features-name">Характеристики персонажа:</h3>
-                <div className="features-item">
-                    <span className="features-item__name">Сила:</span>
-                    <input type="text" className="features-item__value" value="0" />
-                </div>
+import { Component } from 'react'
 
-                <div className="features-item">
-                    <span className="features-item__name">Ловкость:</span>
-                    <input type="text" className="features-item__value" value="0" />
-                </div>
+class Features extends Component {
 
-                <div className="features-item">
-                    <span className="features-item__name">Интеллект:</span>
-                    <input type="text" className="features-item__value" value="0" />
-                </div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            strength: props.features.strength,
+            dexterity: props.features.dexterity,
+            intelligence: props.features.intelligence,
+            charisma: props.features.charisma,
+        }
+    }
 
-                <div className="features-item">
-                    <span className="features-item__name">Харизма:</span>
-                    <input type="text" className="features-item__value" value="0" />
-                </div>
+    onUpdateValueFeatures = (e) => {
+        this.setState({
+            // ...this.state,
+            [e.target.name]: e.target.value
+        })
 
-                <div className="features-item features-item__additional">
-                    <p className="features-item__name">Жизненная сила: 3+сил</p>
-                </div>
+        this.props.onUpdateValue([e.target.name], e.target.value);
+    }
 
-                <div className="features-item features-item__additional">
-                    <p className="features-item__name">Уклонение: 10+инт</p>
-                </div>
 
-                <div className="features-item features-item__additional">
-                    <p className="features-item__name">Энергичность: ловк+инт</p>
+    render() {
+        console.log(this.state)
+        return (
+            <div className="features">
+                <div className="features-list">
+                    <h3 className="features-name">Характеристики персонажа:</h3>
+                    <div className="features-item">
+                        <span className="features-item__name">Сила:</span>
+                        <input type="text" className="features-item__value" 
+                        name="strength"
+                        defaultValue={this.state.strength}
+                        onChange={this.onUpdateValueFeatures} />
+                    </div>
+    
+                    <div className="features-item">
+                        <span className="features-item__name">Ловкость:</span>
+                        <input type="text" className="features-item__value" 
+                        name="dexterity"
+                        defaultValue={this.state.dexterity}
+                        onChange={this.onUpdateValueFeatures} />
+                    </div>
+    
+                    <div className="features-item">
+                        <span className="features-item__name">Интеллект:</span>
+                        <input type="text" className="features-item__value" 
+                        name="intelligence"
+                        defaultValue={this.state.intelligence}
+                        onChange={this.onUpdateValueFeatures} />
+                    </div>
+    
+                    <div className="features-item">
+                        <span className="features-item__name">Харизма:</span>
+                        <input type="text" className="features-item__value" 
+                        defaultValue={this.state.charisma}/>
+                    </div>
+    
+                    <div className="features-item features-item__additional">
+                        <p className="features-item__name">Жизненная сила: {+this.state.strength + 3}</p>
+                    </div>
+    
+                    <div className="features-item features-item__additional">
+                        <p className="features-item__name">Уклонение: {+this.state.intelligence + 10}</p>
+                    </div>
+    
+                    <div className="features-item features-item__additional">
+                        <p className="features-item__name">Энергичность: {+this.state.intelligence + this.state.dexterity}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
 }
 
 export default Features;

@@ -1,4 +1,24 @@
-.profile-container {
+.profile {
     display: flex;
-    background-color: red;
+    align-items: center;
+
+    &__avatar {
+        margin-right: 20px;
+    }
+
+    &__name {
+        padding: 3px 5px;
+        font-size: 1.8rem;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            border: solid 1px rgba(56, 157, 190, 0.7);
+            border-radius: 5px;
+        }
+
+        &:focus {
+            border-color: rgba(56, 157, 190, 1);
+        }
+    }
 }
