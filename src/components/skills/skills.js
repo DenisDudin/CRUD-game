@@ -26,13 +26,17 @@ class Skills extends Component {
             this.setState({
                 [name]: 0
             })
+
+            this.props.onUpdateValue([name], 0);
         } else {
             this.setState({
                 [name]: +e.target.value
             })
+
+            this.props.onUpdateValue([name], +e.target.value);
         }   
         
-        this.props.onUpdateValue([name], +e.target.value);
+        
     }
 
     render() {
