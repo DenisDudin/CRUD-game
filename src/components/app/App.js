@@ -17,12 +17,26 @@ class App extends Component {
         dexterity: 4,
         intelligence: 2,
         charisma: 5,
+        hp: this.calcHP
+      },
+      skills: {
+        attack: 3,
+        stealth: 3,
+        shooting: 4,
+        trainability: 2,
+        survival: 2,
+        medicine: 0,
+        intimidation: 4,
+        insight: 5,
+        appearance: 2,
+        manipulation: 5,
       }
     }
   }
 
   calcHP = (hp) => {
-    this.setState({hp})
+    const valueHP = this.state.features.strength + 3
+    this.setState({features: {hp: valueHP}})
   }
 
   onChangeName = (name) => {
@@ -35,12 +49,19 @@ class App extends Component {
     })
   }
 
+  onUpdateValueSkills = (name, value) => {
+    this.setState(({skills}) => {
+      return {skills: {...skills, [name]: value}}
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Profile name={this.state.name} onChangeName={this.onChangeName}/>
         <Features features={this.state.features} onUpdateValue={this.onUpdateValueFeatures}/>
-        <Skills />
+        <Skills skills={this.state.skills} 
+        onUpdateValue={this.onUpdateValueSkills}/>
         <Battle />
       </div>
     )

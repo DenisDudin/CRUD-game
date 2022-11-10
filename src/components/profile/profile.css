@@ -1,0 +1,29 @@
+.profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__avatar {
+  margin-right: 20px;
+}
+
+.profile__name {
+  padding: 3px 5px;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__name:hover {
+  border: solid 1px rgba(56, 157, 190, 0.7);
+  border-radius: 5px;
+}
+
+.profile__name:focus {
+  border-color: #389dbe;
+}
+/*# sourceMappingURL=profile.css.map */

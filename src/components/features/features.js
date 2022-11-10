@@ -18,12 +18,11 @@ class Features extends Component {
             [e.target.name]: e.target.value
         })
 
-        this.props.onUpdateValue([e.target.name], e.target.value);
+        this.props.onUpdateValue([e.target.name], +e.target.value);
     }
 
 
     render() {
-        console.log(this.state)
         return (
             <div className="features">
                 <div className="features-list">
