@@ -5,19 +5,22 @@ import Profile from '../profile/profile';
 import Features from '../features/features';
 import Skills from '../skills/skills'
 import Battle from '../battle/battle';
+import { getPath } from '@mui/system';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+    const str = 3;
     this.state = {
       name: 'Denis',
       features: {
-        strength: 3,
+        strength: str,
         dexterity: 4,
         intelligence: 2,
         charisma: 5,
-        hp: this.calcHP
+        hp: str + 3
+
       },
       skills: {
         attack: 3,
@@ -30,14 +33,11 @@ class App extends Component {
         insight: 5,
         appearance: 2,
         manipulation: 5,
-      }
+      },
+
     }
   }
 
-  calcHP = (hp) => {
-    const valueHP = this.state.features.strength + 3
-    this.setState({features: {hp: valueHP}})
-  }
 
   onChangeName = (name) => {
     this.setState({name});
@@ -55,6 +55,12 @@ class App extends Component {
     })
   }
 
+  onUpdateValueHP = (hp) => {
+    this.setState(({features}) => {
+      return {features: {...features, hp}}
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -62,7 +68,7 @@ class App extends Component {
         <Features features={this.state.features} onUpdateValue={this.onUpdateValueFeatures}/>
         <Skills skills={this.state.skills} 
         onUpdateValue={this.onUpdateValueSkills}/>
-        <Battle />
+        <Battle hp={this.state.features.hp} onUpdateValue={this.onUpdateValueHP} />
       </div>
     )
   };

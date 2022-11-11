@@ -17,7 +17,7 @@ class Skills extends Component {
             appearance: props.skills.appearance ,
             manipulation: props.skills.manipulation
         }
-    }
+    } 
 
     onUpdateValueSkills = (e) => {
         const name = e.target.name;
@@ -35,12 +35,9 @@ class Skills extends Component {
 
             this.props.onUpdateValue([name], +e.target.value);
         }   
-        
-        
     }
 
     render() {
-        console.log(this.state.attack.defaultValue);
         return (
             <div className="skills">
                 <div className="skills-list">

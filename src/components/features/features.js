@@ -9,6 +9,7 @@ class Features extends Component {
             dexterity: props.features.dexterity,
             intelligence: props.features.intelligence,
             charisma: props.features.charisma,
+            hp: props.features.hp,
         }
     }
 
@@ -54,11 +55,13 @@ class Features extends Component {
                     <div className="features-item">
                         <span className="features-item__name">Харизма:</span>
                         <input type="text" className="features-item__value" 
-                        defaultValue={this.state.charisma}/>
+                        name="charisma"
+                        defaultValue={this.state.charisma}
+                        onChange={this.onUpdateValueFeatures} />
                     </div>
     
                     <div className="features-item features-item__additional">
-                        <p className="features-item__name">Жизненная сила: {+this.state.strength + 3}</p>
+                        <p className="features-item__name">Жизненная сила: {this.props.features.hp}</p>
                     </div>
     
                     <div className="features-item features-item__additional">
