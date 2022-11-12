@@ -11,12 +11,14 @@ class Battle extends Component {
 
     onStartBattle = () => {
         const oldHP = this.state.hp;
-        console.log(oldHP);
+        if (oldHP <= 0) {
+            alert("Герой тяжело ранен, восстановите здоровье");
+            return
+        } 
         
         this.setState({
             hp: oldHP - 1
         })
-
         this.props.onUpdateValue(oldHP - 1)
     }
 

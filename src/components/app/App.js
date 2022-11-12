@@ -14,27 +14,35 @@ class App extends Component {
     const str = 3;
     this.state = {
       name: 'Denis',
-      features: {
-        strength: str,
-        dexterity: 4,
-        intelligence: 2,
-        charisma: 5,
-        hp: str + 3
-
+      strength: {
+        value: str,
+        skills: [{attack: 3}]
       },
-      skills: {
-        attack: 3,
-        stealth: 3,
-        shooting: 4,
-        trainability: 2,
-        survival: 2,
-        medicine: 0,
-        intimidation: 4,
-        insight: 5,
-        appearance: 2,
-        manipulation: 5,
+      dexterity: {
+        value: 4,
+        skills: [
+          {stealth: 3},
+          {shooting: 4}
+        ]
       },
-
+      intelligence: {
+        value: 2,
+        skills: [
+          {trainability: 2},
+          {survival: 2},
+          {medicine: 0}
+        ]
+      },
+      charisma: {
+        value: 5,
+        skills: [
+          {intimidation: 4},
+          {insight: 5},
+          {appearance: 2},
+          {manipulation: 5}
+        ]
+      },
+      hp: str + 3,
     }
   }
 
@@ -44,8 +52,8 @@ class App extends Component {
   }
 
   onUpdateValueFeatures = (name, value) => {
-    this.setState(({features}) => {
-      return {features: {...features, [name]: value}}
+    this.setState(() => {
+      return {[name]:{...this.state[name], value}}
     })
   }
 
@@ -56,19 +64,17 @@ class App extends Component {
   }
 
   onUpdateValueHP = (hp) => {
-    this.setState(({features}) => {
-      return {features: {...features, hp}}
-    })
+    this.setState({hp})
   }
 
   render() {
     return (
       <div className="App">
         <Profile name={this.state.name} onChangeName={this.onChangeName}/>
-        <Features features={this.state.features} onUpdateValue={this.onUpdateValueFeatures}/>
-        <Skills skills={this.state.skills} 
+        <Features features={this.state} onUpdateValue={this.onUpdateValueFeatures}/>
+        <Skills skills={this.state} 
         onUpdateValue={this.onUpdateValueSkills}/>
-        <Battle hp={this.state.features.hp} onUpdateValue={this.onUpdateValueHP} />
+        <Battle hp={this.state.hp} onUpdateValue={this.onUpdateValueHP} />
       </div>
     )
   };

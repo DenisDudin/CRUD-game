@@ -4,22 +4,23 @@ class Features extends Component {
 
     constructor(props) {
         super(props);
+        const { strength, dexterity, intelligence, charisma, hp} = props.features
         this.state = {
-            strength: props.features.strength,
-            dexterity: props.features.dexterity,
-            intelligence: props.features.intelligence,
-            charisma: props.features.charisma,
-            hp: props.features.hp,
+            strength: strength.value,
+            dexterity: dexterity.value,
+            intelligence: intelligence.value,
+            charisma: charisma.value,
+            hp: hp,
         }
     }
 
     onUpdateValueFeatures = (e) => {
+        const name = e.target.name;
         this.setState({
-            // ...this.state,
-            [e.target.name]: e.target.value
+            [name]: +e.target.value
         })
 
-        this.props.onUpdateValue([e.target.name], +e.target.value);
+        this.props.onUpdateValue(name, +e.target.value);
     }
 
 
@@ -61,7 +62,7 @@ class Features extends Component {
                     </div>
     
                     <div className="features-item features-item__additional">
-                        <p className="features-item__name">Жизненная сила: {this.props.features.hp}</p>
+                        <p className="features-item__name">Жизненная сила: {+this.props.features.hp}</p>
                     </div>
     
                     <div className="features-item features-item__additional">
