@@ -16,31 +16,31 @@ class App extends Component {
       name: 'Denis',
       strength: {
         value: str,
-        skills: [{attack: 3}]
+        skills: {attack: 3}
       },
       dexterity: {
         value: 4,
-        skills: [
-          {stealth: 3},
-          {shooting: 4}
-        ]
+        skills: {
+          stealth: 3,
+          shooting: 4
+        }
       },
       intelligence: {
         value: 2,
-        skills: [
-          {trainability: 2},
-          {survival: 2},
-          {medicine: 0}
-        ]
+        skills: {
+          trainability: 2,
+          survival: 2,
+          medicine: 0
+        }
       },
       charisma: {
         value: 5,
-        skills: [
-          {intimidation: 4},
-          {insight: 5},
-          {appearance: 2},
-          {manipulation: 5}
-        ]
+        skills: {
+          intimidation: 4,
+          insight: 5,
+          appearance: 2,
+          manipulation: 5
+        }
       },
       hp: str + 3,
     }

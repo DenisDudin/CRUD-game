@@ -4,7 +4,7 @@ class Features extends Component {
 
     constructor(props) {
         super(props);
-        const { strength, dexterity, intelligence, charisma, hp} = props.features
+        const { strength, dexterity, intelligence, charisma, hp} = props.features;
         this.state = {
             strength: strength.value,
             dexterity: dexterity.value,
